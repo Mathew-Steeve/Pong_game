@@ -1,5 +1,4 @@
 from turtle import Turtle
-POSITION = (470, 0)
 
 
 class Paddle(Turtle):
