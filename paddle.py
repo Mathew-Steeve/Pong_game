@@ -1,40 +1,21 @@
 from turtle import Turtle
-POSITION = ((470, 0), (470, 20), (470, 40))
-UP = 90
-DOWN = 270
-MOVE_DIS = 20
+POSITION = (470, 0)
 
 
-class Paddle:
-    def __init__(self):
-        self.segment = []
-        self.create_paddle()
-        # self.head = self.segment[0]
-        # self.tail = self.segment[2]
+class Paddle(Turtle):
+    def __init__(self, pos):
+        super().__init__()
+        self.shape("square")
+        self.color("white")
+        self.turtlesize(stretch_wid=5, stretch_len=1)
+        self.penup()
+        self.goto(pos)
+    # def create_paddle(self):
 
-    def create_paddle(self):
+    def go_up(self):
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
-        for pad in POSITION:
-            turtle = Turtle("square")
-            turtle.color("white")
-            turtle.penup()
-            turtle.goto(pad)
-            self.segment.append(turtle)
-
-    # def move(self):
-    #     k = self.segment
-    #     for i in range(len(k) - 1, 0, -1):
-    #         new_x = k[i - 1].xcor()
-    #         new_y = k[i - 1].ycor()
-    #         k[i].goto(new_x, new_y)
-    #     self.head.forward(MOVE_DIS)
-    #
-    # def up(self):
-    #     if self.tail.heading() != 90 or self.head.heading() != 90:
-    #         self.head.setheading(UP)
-    #
-    # def down(self):
-    #     if self.tail.heading() != 180 or self.head.heading() != 180:
-    #         self.head.setheading(DOWN)
-
-
+    def go_down(self):
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
